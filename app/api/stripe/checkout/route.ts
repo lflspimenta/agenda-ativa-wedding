@@ -4,12 +4,11 @@ import { requiredEnv } from "@/lib/env";
 
 export const runtime = "nodejs";
 
-export async function POST(request: Request) {
+async function createCheckoutSession(email?: string) {
   const stripe = new Stripe(requiredEnv("STRIPE_SECRET_KEY"));
-  const { email } = await request.json().catch(() => ({ email: undefined }));
   const appUrl = requiredEnv("NEXT_PUBLIC_APP_URL");
 
-  const session = await stripe.checkout.sessions.create({
+  return stripe.checkout.sessions.create({
     mode: "payment",
     customer_email: email,
     line_items: [
@@ -21,6 +20,21 @@ export async function POST(request: Request) {
     success_url: `${appUrl}/entrar?estado=enviado`,
     cancel_url: appUrl
   });
+}
+
+export async function GET() {
+  const session = await createCheckoutSession();
+
+  if (!session.url) {
+    return NextResponse.redirect(requiredEnv("NEXT_PUBLIC_APP_URL"));
+  }
+
+  return NextResponse.redirect(session.url);
+}
+
+export async function POST(request: Request) {
+  const { email } = await request.json().catch(() => ({ email: undefined }));
+  const session = await createCheckoutSession(email);
 
   return NextResponse.json({ url: session.url });
 }
