@@ -28,10 +28,13 @@ export default function LoginPage({ searchParams }: LoginPageProps) {
         <button className="login-button" type="submit">Receber link de entrada</button>
 
         {status === "enviado" ? (
-          <p className="status-message">Enviámos o link para o seu email. Abra-o para entrar.</p>
+          <p className="status-message">Enviamos o link para o seu email. Abra-o para entrar.</p>
         ) : null}
         {status === "erro" ? (
-          <p className="status-message">Não foi possível enviar o link. Confirme o email e tente novamente.</p>
+          <p className="status-message">Nao foi possivel enviar ou confirmar o link. Tente novamente.</p>
+        ) : null}
+        {status === "sem_acesso" ? (
+          <p className="status-message">Este email ainda nao tem acesso ativo a Agenda Ativa.</p>
         ) : null}
         {status === "email" ? (
           <p className="status-message">Escreva o email usado na compra.</p>

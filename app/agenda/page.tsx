@@ -37,7 +37,7 @@ export default async function ProductPage() {
   const userAccess = access as UserAccess | null;
 
   if (!userAccess?.purchase_date) {
-    redirect("/entrar?estado=erro");
+    redirect("/entrar?estado=sem_acesso");
   }
 
   const currentDay = getCurrentDay(userAccess.purchase_date);

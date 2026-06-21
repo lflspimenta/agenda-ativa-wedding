@@ -21,10 +21,10 @@ export async function GET(request: Request) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  if (tokenHash && type === "magiclink") {
+  if (tokenHash) {
     const { error } = await supabase.auth.verifyOtp({
       token_hash: tokenHash,
-      type: "magiclink"
+      type: type === "email" ? "email" : "magiclink"
     });
 
     if (error) {
