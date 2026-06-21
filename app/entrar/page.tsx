@@ -1,4 +1,5 @@
 import { sendMagicLink } from "./actions";
+import { LoginSessionHandler } from "./login-session-handler";
 
 type LoginPageProps = {
   searchParams?: {
@@ -11,6 +12,7 @@ export default function LoginPage({ searchParams }: LoginPageProps) {
 
   return (
     <main className="page">
+      <LoginSessionHandler />
       <header>
         <div>
           <div className="brand">AGENDA ATIVA™</div>

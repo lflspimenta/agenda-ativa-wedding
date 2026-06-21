@@ -16,7 +16,7 @@ export async function sendMagicLink(formData: FormData) {
     requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
   );
 
-  const redirectTo = `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback`;
+  const redirectTo = `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback?next=/agenda`;
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
