@@ -25,10 +25,10 @@ export async function sendMagicLink(formData: FormData) {
   }
 
   // Enviar magic link com PKCE flow (sem flowType implicit)
-  const { error } = await admin.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback`
+ const { createClient } = await import("@supabase/supabase-js");
+const otpClient = createClient(
+  requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
+  requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
     }
   });
 
