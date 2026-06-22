@@ -13,7 +13,14 @@ export async function sendMagicLink(formData: FormData) {
 
   const supabase = createClient(
     requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
-    requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+    requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY"),
+    {
+      auth: {
+        flowType: "implicit",
+        persistSession: false,
+        autoRefreshToken: false
+      }
+    }
   );
 
   const redirectTo = `${requiredEnv("NEXT_PUBLIC_APP_URL")}/entrar`;
