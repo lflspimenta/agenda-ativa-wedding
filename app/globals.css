@@ -410,6 +410,7 @@ h1{
 .product-page .today:before,
 .product-page .today:after{
   content:none;
+  display:none;
 }
 
 .product-kicker{
@@ -969,7 +970,7 @@ h1{
 
 .content-details{
   margin-top:20px;
-  border-top:1px solid rgba(182,95,77,.16);
+  border-top:0;
   padding-top:18px;
 }
 
