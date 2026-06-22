@@ -1,8 +1,11 @@
+import { LoginSessionHandler } from "./entrar/login-session-handler";
+
 export default function LandingPage() {
   const stripePaymentLink = "https://buy.stripe.com/bJeeVddeP6LH5uXcsidjO00";
 
   return (
     <main className="landing">
+      <LoginSessionHandler />
       <section className="landing-hero" aria-label="Agenda Ativa Wedding Planner">
         <img
           className="landing-hero-art"
