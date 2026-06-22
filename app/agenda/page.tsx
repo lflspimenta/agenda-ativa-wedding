@@ -9,13 +9,13 @@ export const dynamic = "force-dynamic";
 const fallbackContent: DailyContent = {
   id: 1,
   day: 1,
-  title: "Como escolher o fotografo ideal para o seu casamento sem arrependimentos",
+  title: "3 erros que os noivos cometem ao escolher o venue.",
   body: [
-    "Escolher o fotografo do casamento nao e apenas escolher imagens bonitas. E escolher a pessoa que vai guardar a memoria de um dos dias mais importantes da sua vida.",
-    "Antes de decidir, veja portfolios completos, confirme se o estilo combina convosco e perceba como o profissional conduz os momentos mais delicados do dia.",
-    "A melhor escolha e aquela que vos deixa tranquilos antes, durante e depois do casamento."
+    "Escolher o venue certo influencia toda a experiência do casamento: o conforto dos convidados, a logística, a fotografia e até o ritmo do dia.",
+    "Antes de decidir, os noivos devem confirmar três pontos essenciais: capacidade real do espaço, plano B em caso de chuva e liberdade para personalizar fornecedores.",
+    "A melhor escolha é aquela que permite viver o dia com tranquilidade, sem decisões de última hora."
   ].join("\n\n"),
-  cta: "Guarde este post para quando comecar a procurar fornecedores."
+  cta: "Guarde este post para quando começar a visitar espaços para o casamento."
 };
 
 export default async function ProductPage() {
@@ -52,56 +52,73 @@ export default async function ProductPage() {
   const firstName = userAccess.first_name?.trim();
 
   return (
-    <main className="page">
-      <header>
-        <div>
-          <div className="brand">AGENDA ATIVA™</div>
-          <div className="edition">Wedding Planner Edition</div>
-        </div>
-        <div className="date-mark">
-          <strong>Dia {currentDay}</strong>
-          Dia {currentDay} de 30
-        </div>
+    <main className="page product-page">
+      <header className="product-brand">
+        <div className="brand">AGENDA ATIVA™</div>
+        <div className="edition">Wedding Planner Edition</div>
       </header>
 
       <section className="hero-message" aria-label="Mensagem principal">
-        {firstName ? <p>{firstName},</p> : null}
-        <h1>Hoje ja esta tratado.</h1>
+        {firstName ? <p>Olá {firstName},</p> : null}
+        <h1>Hoje já está tratado.</h1>
+      </section>
+
+      <div className="product-promise">
+        Volte aos noivos.
+        <br />
+        Nós tratamos do Instagram.
+      </div>
+
+      <section className="daily-meta" aria-label="Resumo do dia">
+        <div className="daily-time">⏱ 3 min</div>
+        <div className="daily-day">
+          <span>Dia {currentDay}</span>
+          de 30
+        </div>
       </section>
 
       <section className="agenda" aria-label="Agenda do dia">
-        <article className="today">
-          <div className="day-label">Dia {currentDay} de 30</div>
-          <div className="progress-note">
-            O conteudo e desbloqueado dia apos dia para manter a sua presenca ativa sem decisoes.
-          </div>
+        <article className="today experience-card">
+          <div className="product-kicker">Conteúdo de hoje</div>
           <h2 className="post-title">{dailyContent.title}</h2>
 
-          <div className="section-label">Legenda pronta</div>
-          <div className="copy-block">
-            {dailyContent.body.split("\n").map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+          <div className="proof-list" aria-label="Incluído hoje">
+            <div><span>✓</span> Conteúdo preparado</div>
+            <div><span>✓</span> Legenda pronta</div>
+            <div><span>✓</span> CTA incluída</div>
           </div>
 
-          <div className="section-label">CTA</div>
-          <div className="cta-copy">{dailyContent.cta}</div>
-
-          <div className="time">Tempo estimado: 3 minutos</div>
           <CopyButton title={dailyContent.title} body={dailyContent.body} cta={dailyContent.cta} />
+
+          <details className="content-details">
+            <summary>Ver conteúdo completo</summary>
+            <div className="details-panel">
+              <div className="section-label">Legenda pronta</div>
+              <div className="copy-block">
+                {dailyContent.body.split("\n").map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+
+              <div className="section-label">CTA</div>
+              <div className="cta-copy">{dailyContent.cta}</div>
+            </div>
+          </details>
         </article>
 
-        <aside className="upcoming" aria-label="Proximos dias">
-          <div className="next-title">Proximos dias</div>
+        <aside className="upcoming product-upcoming" aria-label="Próximos dias">
           {upcomingDays.map((item) => (
             <div className="locked-day" key={item.day}>
-              <strong>
-                Dia {item.day} <span>bloqueado</span>
-              </strong>
-              <span>{item.label}</span>
+              <div>
+                <strong>Dia {item.day}</strong>
+                <span>{item.label}</span>
+              </div>
+              <svg className="lock-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="6.5" y="10" width="11" height="9" rx="2" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M8.5 10V7.8C8.5 5.7 10 4.2 12 4.2s3.5 1.5 3.5 3.6V10" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
             </div>
           ))}
-          <div className="note">Abra. Copie. Publique. E volte ao que realmente precisa da sua atencao.</div>
         </aside>
       </section>
     </main>
