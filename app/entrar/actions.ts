@@ -1,5 +1,6 @@
 "use server";
 
+import { createClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { redirect } from "next/navigation";
 import { requiredEnv } from "@/lib/env";
@@ -11,9 +12,8 @@ export async function sendMagicLink(formData: FormData) {
     redirect("/entrar?estado=email");
   }
 
-  // Verificar se o utilizador tem acesso (existe em public.users)
   const admin = createSupabaseAdminClient();
-  
+
   const { data: userAccess } = await admin
     .from("users")
     .select("email")
@@ -24,11 +24,15 @@ export async function sendMagicLink(formData: FormData) {
     redirect("/entrar?estado=sem_acesso");
   }
 
-  // Enviar magic link com PKCE flow (sem flowType implicit)
- const { createClient } = await import("@supabase/supabase-js");
-const otpClient = createClient(
-  requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
-  requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+  const otpClient = createClient(
+    requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
+    requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+  );
+
+  const { error } = await otpClient.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback`
     }
   });
 
