@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@supabase/supabase-js";
+import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { redirect } from "next/navigation";
 import { requiredEnv } from "@/lib/env";
 
@@ -11,23 +11,24 @@ export async function sendMagicLink(formData: FormData) {
     redirect("/entrar?estado=email");
   }
 
-  const supabase = createClient(
-    requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
-    requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY"),
-    {
-      auth: {
-        flowType: "implicit",
-        persistSession: false,
-        autoRefreshToken: false
-      }
-    }
-  );
+  // Verificar se o utilizador tem acesso (existe em public.users)
+  const admin = createSupabaseAdminClient();
+  
+  const { data: userAccess } = await admin
+    .from("users")
+    .select("email")
+    .eq("email", email)
+    .single();
 
-  const redirectTo = `${requiredEnv("NEXT_PUBLIC_APP_URL")}/entrar`;
-  const { error } = await supabase.auth.signInWithOtp({
+  if (!userAccess) {
+    redirect("/entrar?estado=sem_acesso");
+  }
+
+  // Enviar magic link com PKCE flow (sem flowType implicit)
+  const { error } = await admin.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: redirectTo
+      emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback`
     }
   });
 
