@@ -717,20 +717,21 @@ h1{
 @media(max-width:700px){
   .landing-hero-desktop{display:none}
   .landing-hero-mobile{display:block;background:#fffaf6}
-  .landing-mobile-brand{padding:34px 24px 24px;text-align:center;background:#fffaf6}
-  .landing-mobile-logo{font-family:var(--font-cormorant),serif;font-size:42px;line-height:.9;letter-spacing:.055em;font-weight:500;white-space:nowrap}
-  .landing-mobile-edition{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:14px;color:#9b6b61;font-size:10px;letter-spacing:.22em;text-transform:uppercase}
-  .landing-mobile-edition span{display:block;width:46px;height:1px;background:rgba(180,91,72,.24)}
-  .landing-mobile-photo{display:block;width:100%;height:auto}
-  .landing-mobile-copy{padding:34px 24px 38px;background:linear-gradient(180deg,#fffaf6 0%,#fbf3ed 100%)}
-  .landing-mobile-copy h1{font-family:var(--font-cormorant),serif;font-size:54px;line-height:.96;font-weight:500;letter-spacing:0;margin:0 0 22px}
-  .landing-mobile-copy h1 em{display:block;color:var(--landing-rose);font-style:normal;margin-top:8px}
-  .landing-mobile-copy p{color:#221e1b;font-size:17px;line-height:1.45;margin-bottom:26px}
+  .landing-mobile-brand{padding:28px 20px 18px;text-align:center;background:#fffaf6}
+  .landing-mobile-logo{font-family:var(--font-cormorant),serif;font-size:clamp(30px,9.2vw,36px);line-height:.92;letter-spacing:.035em;font-weight:500;white-space:nowrap}
+  .landing-mobile-edition{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:12px;color:#9b6b61;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+  .landing-mobile-edition span{display:block;width:42px;height:1px;background:rgba(180,91,72,.24)}
+  .landing-mobile-photo{display:block;width:100%;height:260px;object-fit:cover;object-position:center center}
+  .landing-mobile-copy{padding:25px 32px 60px;background:linear-gradient(180deg,#fffaf6 0%,#fbf3ed 100%)}
+  .landing-mobile-copy h1{font-family:var(--font-cormorant),serif;font-size:39px;line-height:.96;font-weight:500;letter-spacing:0;margin:0 0 14px}
+  .landing-mobile-copy h1 em{display:block;color:var(--landing-rose);font-style:normal;margin-top:10px}
+  .landing-mobile-copy p{color:#2a2421;font-size:13px;line-height:1.38;margin-bottom:12px}
   .landing-mobile-copy p strong{display:block;font-weight:800}
-  .landing-mobile-mantra{font-family:var(--font-cormorant),serif;color:var(--landing-rose);font-size:30px;font-style:italic;line-height:1;margin:0 0 28px;padding:18px 0;border-top:1px solid rgba(180,91,72,.22);border-bottom:1px solid rgba(180,91,72,.22)}
-  .landing-mobile-price{display:flex;align-items:center;gap:16px;margin-bottom:26px}
-  .landing-mobile-price strong{font-family:var(--font-cormorant),serif;font-size:64px;line-height:.9;font-weight:500}
-  .landing-mobile-price span{color:#2c2724;font-size:13px;line-height:1.55;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+  .landing-mobile-mantra{font-family:var(--font-cormorant),serif;color:var(--landing-rose);font-size:25px;font-style:italic;line-height:1;margin:0 0 12px;padding:10px 0;border-top:1px solid rgba(180,91,72,.22);border-bottom:1px solid rgba(180,91,72,.22)}
+  .landing-mobile-price{display:flex;align-items:center;gap:14px;margin-bottom:13px}
+  .landing-mobile-price strong{min-width:94px;font-family:var(--font-cormorant),serif;font-size:54px;line-height:.9;font-weight:500}
+  .landing-mobile-price span{border-left:1px solid rgba(180,91,72,.24);padding-left:13px;color:#2a2421;font-size:11px;line-height:1.35;text-transform:none;letter-spacing:0;font-weight:400}
+  .landing-mobile-price span b{display:block;text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-bottom:2px}
   .landing-mobile-cta{width:100%}
   .landing-strip{margin:0 14px 54px;padding:30px 24px}
   .landing-strip-title{font-size:35px}
@@ -740,14 +741,14 @@ h1{
   .preview-card{min-width:0}
   .landing-objection,.landing-emotion{padding:34px 24px}
   .price-card{padding:34px 24px}
-  .landing-cta{padding:20px 18px;font-size:12px;letter-spacing:.12em;gap:10px}
+  .landing-cta{padding:18px 14px;font-size:11px;letter-spacing:.12em;gap:10px}
 }
 
 @media(min-width:701px) and (max-width:1050px){
   .landing-hero-desktop{display:none}
   .landing-hero-mobile{display:block;background:#fffaf6}
   .landing-mobile-brand{padding:46px 34px 30px;text-align:center;background:#fffaf6}
-  .landing-mobile-logo{font-family:var(--font-cormorant),serif;font-size:58px;line-height:.9;letter-spacing:.055em;font-weight:500;white-space:nowrap}
+  .landing-mobile-logo{font-family:var(--font-cormorant),serif;font-size:clamp(42px,7vw,58px);line-height:.9;letter-spacing:.05em;font-weight:500;white-space:nowrap}
   .landing-mobile-edition{margin-top:20px;display:flex;align-items:center;justify-content:center;gap:18px;color:#9b6b61;font-size:11px;letter-spacing:.26em;text-transform:uppercase}
   .landing-mobile-edition span{display:block;width:80px;height:1px;background:rgba(180,91,72,.24)}
   .landing-mobile-photo{display:block;width:100%;height:auto}

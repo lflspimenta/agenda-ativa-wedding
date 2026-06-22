@@ -53,11 +53,18 @@ export default function LandingPage() {
 
             <div className="landing-mobile-price">
               <strong>97€</strong>
-              <span>Pagamento único · Sem mensalidades · Acesso imediato</span>
+              <span>
+                <b>Pagamento único</b>
+                Sem mensalidades.
+                <br />
+                Sem subscrições.
+                <br />
+                Acesso imediato.
+              </span>
             </div>
 
             <a className="landing-cta landing-mobile-cta" href={stripePaymentLink}>
-              QUERO A MINHA AGENDA ATIVA™ →
+              QUERO A MINHA AGENDA ATIVA™
             </a>
           </div>
         </div>
