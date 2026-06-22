@@ -1,6 +1,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+type CookieToSet = {
+  name: string;
+  value: string;
+  options?: Record<string, unknown>;
+};
+
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next({
     request: {
@@ -16,10 +22,10 @@ export async function middleware(request: NextRequest) {
         getAll() {
           return request.cookies.getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet: CookieToSet[]) {
           cookiesToSet.forEach(({ name, value, options }) => {
-            request.cookies.set(name, value, options);
-            response.cookies.set(name, value, options);
+            request.cookies.set(name, value, options as never);
+            response.cookies.set(name, value, options as never);
           });
         }
       }
@@ -28,12 +34,10 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
-  // Protege /agenda — redireciona para /entrar se não autenticado
   if (!user && request.nextUrl.pathname.startsWith("/agenda")) {
     return NextResponse.redirect(new URL("/entrar", request.url));
   }
 
-  // Se já autenticado e vai para /entrar — redireciona para /agenda
   if (user && request.nextUrl.pathname === "/entrar") {
     return NextResponse.redirect(new URL("/agenda", request.url));
   }
