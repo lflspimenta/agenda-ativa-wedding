@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback?next=/agenda`
+        emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/entrar`
       }
     });
   }
