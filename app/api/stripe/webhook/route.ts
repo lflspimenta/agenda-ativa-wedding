@@ -52,20 +52,13 @@ export async function POST(request: Request) {
 
     const supabase = createClient(
       requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
-      requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY"),
-      {
-        auth: {
-          flowType: "implicit",
-          persistSession: false,
-          autoRefreshToken: false
-        }
-      }
+      requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
     );
 
     await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/entrar`
+        emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback`
       }
     });
   }
