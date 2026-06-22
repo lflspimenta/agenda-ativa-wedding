@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
 
 export function LoginSessionHandler() {
   useEffect(() => {
     async function handleMagicLinkHash() {
+      const search = window.location.search;
+
+      if (search.includes("code=") || search.includes("token_hash=")) {
+        window.location.replace(`/auth/callback${search}`);
+        return;
+      }
+
       const hash = window.location.hash;
 
       if (!hash || !hash.includes("access_token")) {
@@ -21,7 +28,7 @@ export function LoginSessionHandler() {
         return;
       }
 
-      const supabase = createClient(
+      const supabase = createBrowserClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL || "",
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
       );

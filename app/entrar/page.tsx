@@ -27,7 +27,7 @@ export default function LoginPage({ searchParams }: LoginPageProps) {
       <form className="login-card" action={sendMagicLink}>
         <label htmlFor="email">Email de acesso</label>
         <input id="email" name="email" type="email" required placeholder="o-seu-email@exemplo.com" />
-        <button className="login-button" type="submit">Receber link de entrada</button>
+        <button className="login-button" type="submit">Receber acesso</button>
 
         {status === "enviado" ? (
           <p className="status-message">Enviamos o link para o seu email. Abra-o para entrar.</p>
