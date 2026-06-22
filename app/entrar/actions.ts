@@ -13,7 +13,6 @@ export async function sendMagicLink(formData: FormData) {
   }
 
   const admin = createSupabaseAdminClient();
-
   const { data: userAccess } = await admin
     .from("users")
     .select("email")
@@ -24,15 +23,16 @@ export async function sendMagicLink(formData: FormData) {
     redirect("/entrar?estado=sem_acesso");
   }
 
-  const otpClient = createClient(
+  const supabase = createClient(
     requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
     requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
   );
 
-  const { error } = await otpClient.auth.signInWithOtp({
+  const redirectTo = `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback`;
+  const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: `${requiredEnv("NEXT_PUBLIC_APP_URL")}/auth/callback`
+      emailRedirectTo: redirectTo
     }
   });
 
