@@ -173,11 +173,11 @@ export default function LandingPage() {
         <h2>Pronta para ter o Instagram sob controlo?</h2>
         <p>Pagamento único. Sem mensalidades. Sem subscrições. Acesso imediato.</p>
         <div className="price-card">
-          <div className="price">97€</div>
+          <div className="price-value-title">O que recebe hoje</div>
           <div className="price-includes">
             <div><span>✓</span>30 dias de conteúdo prontos a publicar</div>
             <div><span>✓</span>Legendas preparadas</div>
-            <div><span>✓</span>Call to action incluída</div>
+            <div><span>✓</span>CTA incluída</div>
             <div><span>✓</span>Menos de 5 minutos por dia</div>
             <div><span>✓</span>Acesso imediato</div>
           </div>
