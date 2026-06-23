@@ -139,20 +139,68 @@ export default function LandingPage() {
         </ul>
       </section>
 
+      <section className="landing-real-example">
+        <div className="real-example-copy">
+          <span>Exemplo real</span>
+          <h2>Exemplo real do que vai receber</h2>
+        </div>
+        <article className="real-example-card">
+          <small>Dia 12</small>
+          <h3>3 erros que os noivos cometem ao escolher o venue.</h3>
+          <div>
+            <strong>Trecho da legenda:</strong>
+            <p>Escolher o venue é uma das decisões mais importantes do casamento. Antes de fechar contrato, confirme acessos, horários, plano B para chuva e o que está realmente incluído no valor.</p>
+          </div>
+          <div>
+            <strong>CTA:</strong>
+            <p>Guarde este post para rever antes da próxima visita a um venue.</p>
+          </div>
+        </article>
+      </section>
+
+      <section className="landing-product-glimpse">
+        <div className="product-glimpse-copy">
+          <span>Depois da compra</span>
+          <h2>Depois da compra, é isto que encontra</h2>
+          <p>Hoje já está tratado.<br />Abra. Copie. Publique.</p>
+        </div>
+        <div className="product-glimpse-frame">
+          <img src="/produto-preview-mobile.png" alt="Prévia da Agenda Ativa com conteúdo de hoje e botão copiar conteúdo" />
+        </div>
+      </section>
+
       <section className="price-section" id="comprar">
         <h2>Pronta para ter o Instagram sob controlo?</h2>
         <p>Pagamento único. Sem mensalidades. Sem subscrições. Acesso imediato.</p>
         <div className="price-card">
           <div className="price">97€</div>
-          <p>30 dias de conteúdo prontos a publicar.</p>
-          <p>Pagamento único. Sem mensalidades. Sem subscrições. Acesso imediato.</p>
+          <div className="price-includes">
+            <div><span>✓</span>30 dias de conteúdo prontos a publicar</div>
+            <div><span>✓</span>Legendas preparadas</div>
+            <div><span>✓</span>Call to action incluída</div>
+            <div><span>✓</span>Menos de 5 minutos por dia</div>
+            <div><span>✓</span>Acesso imediato</div>
+          </div>
+          <p>Pagamento único. Sem mensalidades. Sem subscrições.</p>
           <a className="landing-cta" href={stripePaymentLink}>QUERO A MINHA AGENDA ATIVA™ →</a>
+        </div>
+      </section>
+
+      <section className="landing-faq" aria-label="Perguntas frequentes">
+        <h2>Perguntas frequentes</h2>
+        <div className="faq-list">
+          <div><h3>Recebo acesso quando?</h3><p>Imediatamente após a compra.</p></div>
+          <div><h3>Preciso de usar ChatGPT?</h3><p>Não. A Agenda Ativa™ já vem pronta a usar.</p></div>
+          <div><h3>Preciso de criar conteúdo?</h3><p>Não. Só precisa de copiar, adaptar se quiser, e publicar.</p></div>
+          <div><h3>É uma subscrição?</h3><p>Não. É pagamento único.</p></div>
+          <div><h3>Posso usar com as minhas próprias fotografias?</h3><p>Sim. O conteúdo ganha força quando é publicado com imagens reais do seu trabalho.</p></div>
         </div>
       </section>
 
       <section className="landing-final">
         <p>Continue focada nos noivos. O Instagram continua ativo.</p>
         <a className="landing-cta" href={stripePaymentLink}>QUERO A MINHA AGENDA ATIVA™ →</a>
+        <small>Acesso imediato após compra.</small>
       </section>
     </main>
   );
